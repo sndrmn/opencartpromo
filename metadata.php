@@ -12,16 +12,15 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
+		<!-- Scripts -->
+		<script src="assets/js/main2.js"></script>
 
 		<!-- Header -->
 			<header id="header">
 				<h1>WEBSITE METADATA</h1>
-
+				<button onClick="window.location.reload();">Refresh Page</button><br><br>
 				<?php
 				    $url = "169.254.169.254";
-					class metadata
-					{
-					public function metadata_query($url){
 						$curlresult = exec("curl -m 3 http://$url", $outcome, $status);
 						if (0 == $status) {
 							$location = exec("curl -H Metadata:true \"http://$url/metadata/instance/compute/location?api-version=2019-03-11&format=text\"");
@@ -52,16 +51,11 @@
 							echo nl2br("<strong>This VM is running On-Prem </strong> \n\n <strong> HOSTNAME: </strong> \n $local_hostname \n\n <strong>VMTOOLS: </strong> \n $vmtools");
 							$onprem = "VMware";
 							return $onprem;
-						}
-						}
 					}
 				?>
-
-				
 			</header>
 
-		<!-- Scripts -->
-			<script src="assets/js/main2.js"></script>
+		
 
 	</body>
 </html>
